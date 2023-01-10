@@ -19,6 +19,7 @@ static struct passwd *getCurrentUserPassword(uid_t uid);
 static void getShadowPassword(char *hash_real, char *name);
 static char *getPasswordFromUser(const char *prompt);
 static char *getHashedPassword(char *pass_try, char *hash_real);
+int comparePasswords(char *user_entered_hashed_password, char *user_password_hased_password);
 
 int main()
 {
