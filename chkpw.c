@@ -130,7 +130,7 @@ int comparePasswords(char *user_entered_hashed_password, char *user_password_has
     }
     else
     {
-        printf("ERR\n");
+        printf("ERR: Wrong password\n");
         return 1;
     }
 }
