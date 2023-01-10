@@ -107,7 +107,10 @@ static char *getHashedPassword(char *pass_try, char *hash_real)
     // that we got from passwd/shadow, it is prepended
     // to the hashed password.
     // It will also be prepended to the output.
-    char *hash_try = crypt(pass_try, hash_real);
+    static char *hash_try;
+
+    hash_try = crypt(pass_try, hash_real);
+
     if (hash_try == NULL)
     {
         fprintf(stderr, "crypt() failed\n");
