@@ -14,6 +14,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 #include "chkpw.h"
 
@@ -21,9 +22,9 @@ static struct passwd *getCurrentUserPassword(uid_t uid);
 static void getShadowPassword(char *hash_real, char *name);
 static char *getPasswordFromUser(const char *prompt);
 static char *getHashedPassword(char *pass_try, char *hash_real);
-static int comparePasswords(char *user_entered_hashed_password, char *user_password_hased_password);
+static bool comparePasswords(char *user_entered_hashed_password, char *user_password_hased_password);
 
-int chkpw(void)
+bool chkpw(void)
 {
 
     /**
@@ -122,7 +123,7 @@ static char *getHashedPassword(char *pass_try, char *hash_real)
     return hash_try;
 }
 
-static int comparePasswords(char *user_entered_hashed_password, char *user_password_hased_password)
+static bool comparePasswords(char *user_entered_hashed_password, char *user_password_hased_password)
 {
     // Since the output of crypt() will be in the same
     // format as in the system password files we can
@@ -131,11 +132,11 @@ static int comparePasswords(char *user_entered_hashed_password, char *user_passw
     if (strcmp(user_entered_hashed_password, user_password_hased_password) == 0)
     {
         printf("OK\n");
-        return 0;
+        return true;
     }
     else
     {
         printf("ERR: Wrong password\n");
-        return 1;
+        return false;
     }
 }

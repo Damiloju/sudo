@@ -8,6 +8,6 @@
 #define CHKPW_H_
 
 // Public functions
-int chkpw(void);
+bool chkpw(void);
 
 #endif // CHKPW_H_
