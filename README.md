@@ -26,4 +26,4 @@ sudo make suid
 
 
 # License
-MIT
+[MIT](LICENSE)
