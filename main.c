@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
         switch (opt)
         {
         case 'h':
-            printf("Usage: %s [-h help] [-u user] uid [command]\n", argv[0]);
+            fprintf(stderr, "Usage: %s [-h help] [-u user] uid [command]\n", argv[0]);
             return 0;
         case 'u':
             user = atoi(optarg);

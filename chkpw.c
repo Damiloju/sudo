@@ -131,12 +131,12 @@ static bool comparePasswords(char *user_entered_hashed_password, char *user_pass
     // correct.
     if (strcmp(user_entered_hashed_password, user_password_hased_password) == 0)
     {
-        printf("OK\n");
+        fprintf(stderr, "OK\n");
         return true;
     }
     else
     {
-        printf("ERR: Wrong password\n");
+        fprintf(stderr, "ERR: Wrong password\n");
         return false;
     }
 }
