@@ -9,12 +9,14 @@ int setUserIdentity(uid_t uid);
 int main(int argc, char *argv[])
 {
     bool password_is_correct = false;
+    int numberOfPasswordTries = 0;
     int uid = -1;
     int setUserIdentityReturn = 0;
 
-    while (!password_is_correct)
+    while (!password_is_correct && numberOfPasswordTries < 3)
     {
         password_is_correct = chkpw();
+        numberOfPasswordTries++;
     }
 
     setUserIdentityReturn = setUserIdentity(uid);
