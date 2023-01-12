@@ -73,6 +73,8 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    setenv("PATH", "/usr/local/bin:/usr/bin:/bin", 1); // set path to safe value leaving out sbin
+
     return runCommand(argc, argv);
 }
 
