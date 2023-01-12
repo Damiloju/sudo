@@ -13,11 +13,10 @@ int setUserIdentity(uid_t uid);
 int main(int argc, char *argv[])
 {
     bool password_is_correct = false;
-    int opt, user, help, numberOfPasswordTries, setUserIdentityReturn;
+    int opt, user, numberOfPasswordTries, setUserIdentityReturn;
     numberOfPasswordTries = 0;
     setUserIdentityReturn = 0;
     user = -1;
-    help = 0;
 
     /**
      * Parse command line arguments
