@@ -1,17 +1,57 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
 
 #include "chkpw.h"
+
+#define EXIT_FAILURE 1
 
 int setUserIdentity(uid_t uid);
 
 int main(int argc, char *argv[])
 {
     bool password_is_correct = false;
-    int numberOfPasswordTries = 0;
-    int uid = -1;
-    int setUserIdentityReturn = 0;
+    int opt, user, help, numberOfPasswordTries, setUserIdentityReturn, uid;
+    numberOfPasswordTries = 0;
+    uid = -1;
+    setUserIdentityReturn = 0;
+    user = -1;
+    help = 0;
+
+    /**
+     * Parse command line arguments
+     * -h: help
+     * -u: user uid
+     */
+    while ((opt = getopt(argc, argv, "hu:")) != -1)
+    {
+        switch (opt)
+        {
+        case 'h':
+            printf("Usage: %s [-h help] [-u user] uid [command]\n", argv[0]);
+            return 0;
+        case 'u':
+            user = atoi(optarg);
+            break;
+        default:
+            fprintf(stderr, "Usage: %s [-h help] [-u user] uid [command]\n", argv[0]);
+            return EXIT_FAILURE;
+        }
+    }
+
+    // Here we change the arguments so that the array starts from the
+    // point after all the options have been parsed.
+    argc -= optind;
+    argv += optind;
+
+    // `argc` will be 0 if there are no additional arguments after the
+    // options or there were no options as well.
+    if (argc == 0)
+    {
+        fprintf(stderr, "Usage: %s [-h help] [-u user] uid [command]\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
     while (!password_is_correct && numberOfPasswordTries < 3)
     {
