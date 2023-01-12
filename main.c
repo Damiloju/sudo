@@ -13,9 +13,8 @@ int setUserIdentity(uid_t uid);
 int main(int argc, char *argv[])
 {
     bool password_is_correct = false;
-    int opt, user, help, numberOfPasswordTries, setUserIdentityReturn, uid;
+    int opt, user, help, numberOfPasswordTries, setUserIdentityReturn;
     numberOfPasswordTries = 0;
-    uid = -1;
     setUserIdentityReturn = 0;
     user = -1;
     help = 0;
@@ -60,7 +59,7 @@ int main(int argc, char *argv[])
     //     numberOfPasswordTries++;
     // }
 
-    setUserIdentityReturn = setUserIdentity(uid);
+    setUserIdentityReturn = setUserIdentity(user);
 
     if (setUserIdentityReturn == -1)
     {

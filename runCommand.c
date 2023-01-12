@@ -54,7 +54,6 @@ int runCommand(int argc, char **argv)
     // exited in some way and that the code was successful (=0)
     if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
     {
-        fprintf(stderr, "Program exited successfully\n");
         return 0;
     }
 
