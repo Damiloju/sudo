@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "chkpw.h"
+#include "runCommand.h"
 
 #define EXIT_FAILURE 1
 

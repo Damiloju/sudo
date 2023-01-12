@@ -11,6 +11,8 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+#include "runCommand.h"
+
 int runCommand(int argc, char *argv)
 {
 
