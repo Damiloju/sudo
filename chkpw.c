@@ -19,7 +19,7 @@
 #include "chkpw.h"
 
 static struct passwd *getCurrentUserPassword(uid_t uid);
-static void getShadowPassword(char *hash_real, char *name);
+static struct spwd *getShadowPassword(char *hash_real, char *name);
 static char *getPasswordFromUser(const char *prompt);
 static char *getHashedPassword(char *pass_try, char *hash_real);
 static bool comparePasswords(char *user_entered_hashed_password, char *user_password_hased_password);
@@ -39,7 +39,7 @@ bool chkpw(void)
     char *name = pwd->pw_name;
     char *hash_real = pwd->pw_passwd;
 
-    getShadowPassword(hash_real, name);
+    hash_real = getShadowPassword(hash_real, name)->sp_pwdp;
 
     char *pass_try = getPasswordFromUser("Your password: ");
 
@@ -63,7 +63,7 @@ static struct passwd *getCurrentUserPassword(uid_t uid)
     return pwd;
 }
 
-static void getShadowPassword(char *hash_real, char *name)
+static struct spwd *getShadowPassword(char *hash_real, char *name)
 {
     // If the password field in the /etc/passwd file is 'x' that means
     // that the password (hashed) is stored in /etc/shadow, instead.
@@ -80,7 +80,7 @@ static void getShadowPassword(char *hash_real, char *name)
             _exit(1);
         }
 
-        hash_real = shadow->sp_pwdp;
+        return shadow;
     }
 }
 
