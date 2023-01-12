@@ -4,7 +4,7 @@ This is a program that allows users to run commands as root or any other user. T
 # Command line options:
 
 1. `-h` for help/usage
-2. `-u` to select user to run the command as
+2. `-u` `uid` to select user to run the command as
 
 # Example commands
 - `./main -u 0 ls -l`
