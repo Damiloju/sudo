@@ -54,11 +54,11 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    while (!password_is_correct && numberOfPasswordTries < 3)
-    {
-        password_is_correct = chkpw();
-        numberOfPasswordTries++;
-    }
+    // while (!password_is_correct && numberOfPasswordTries < 3)
+    // {
+    //     password_is_correct = chkpw();
+    //     numberOfPasswordTries++;
+    // }
 
     setUserIdentityReturn = setUserIdentity(uid);
 
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    return 0;
+    return runCommand(argc, argv);
 }
 
 /**

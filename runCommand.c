@@ -13,7 +13,7 @@
 
 #include "runCommand.h"
 
-int runCommand(int argc, char *argv)
+int runCommand(int argc, char **argv)
 {
 
     // After this the program is running in two processes, the `if`

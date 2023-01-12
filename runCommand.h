@@ -8,6 +8,6 @@
 #define RUN_COMMAND_H_
 
 // Public functions
-int runCommand(int argc, char *argv);
+int runCommand(int argc, char **argv);
 
 #endif // RUN_COMMAND_H_
