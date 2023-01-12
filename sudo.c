@@ -59,6 +59,12 @@ int main(int argc, char *argv[])
         numberOfPasswordTries++;
     }
 
+    if (!password_is_correct)
+    {
+        fprintf(stderr, "Incorrect password\n");
+        return 1;
+    }
+
     setUserIdentityReturn = setUserIdentity(user);
 
     if (setUserIdentityReturn == -1)
